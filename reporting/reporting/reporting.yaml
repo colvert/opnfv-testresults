@@ -1,0 +1,50 @@
+---
+general:
+    pods:
+        - lf-pod2
+        # - pod4
+
+    versions:
+        - master
+        - euphrates
+    log:
+        log_file: reporting.log
+        log_level: DEBUG
+
+    period: 10
+
+    nb_iteration_tests_success_criteria: 4
+
+    directories:
+        # Relative to the path where the repo is cloned:
+        dir_reporting: utils/tests/reporting/
+        dir_log: utils/tests/reporting/log/
+        dir_conf: utils/tests/reporting/conf/
+        dir_utils: utils/tests/reporting/utils/
+        dir_templates: utils/tests/reporting/templates/
+        dir_display: utils/tests/reporting/display/
+
+    # url: 10.0.2.8:8021/reporting/
+    url: testresults.opnfv.org/reporting/
+
+testapi:
+    url: testresults.opnfv.org/test/api/v1/results
+    # url: 10.0.2.8:8001/api/v1/results
+
+functest:
+    blacklist:
+        - odl_netvirt
+        - tempest_full_parallel
+        - rally_full
+    max_scenario_criteria: 50
+    test_conf: https://git.opnfv.org/cgit/functest/plain/functest/ci/testcases.yaml
+    log_level: ERROR
+    jenkins_url: https://build.opnfv.org/ci/view/functest/job/
+    # yamllint disable rule:truthy
+    exclude_noha: False
+    exclude_virtual: False
+    # yamllint enable
+
+yardstick:
+    test_conf: https://git.opnfv.org/cgit/yardstick/plain/tests/ci/report_config.yaml
+    log_level: ERROR
