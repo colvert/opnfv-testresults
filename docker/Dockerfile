@@ -21,7 +21,7 @@ LABEL version="1.0" description="OPNFV Test Reporting Docker container"
 ARG BRANCH=master
 
 ENV HOME /home/opnfv
-ENV working_dir ${HOME}/releng-testresults/reporting
+ENV working_dir ${HOME}/releng-testresults
 ENV CONFIG_REPORTING_YAML ${working_dir}/reporting/reporting.yaml
 
 WORKDIR ${HOME}
