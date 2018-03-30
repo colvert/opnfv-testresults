@@ -164,7 +164,7 @@ for version in VERSIONS:
                                         displayName)
 
                             result = rp_utils.getCaseScore(name, pod,
-                                                               s, version)
+                                                           s, version)
                             # if no result set the value to 0
                             if result < 0:
                                 result = 0

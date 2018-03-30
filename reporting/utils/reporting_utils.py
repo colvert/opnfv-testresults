@@ -239,7 +239,6 @@ def getScenarioStatus(pod, version):
     return result_dict
 
 
-
 def getNbtestOk(results):
     """
     based on default value (PASS) count the number of test OK
@@ -503,8 +502,8 @@ def export_csv(scenario_file_name, pod, version):
     Generate sub files based on scenario_history.txt
     """
     scenario_pod_file_name = ("./display/" + version +
-                                    "/functest/scenario_history_" +
-                                    pod + ".csv")
+                              "/functest/scenario_history_" +
+                              pod + ".csv")
     scenario_pod_file = open(scenario_pod_file_name, "a")
     with open(scenario_file_name, "r") as scenario_file:
         scenario_pod_file.write("date,scenario,pod,detail,score\n")

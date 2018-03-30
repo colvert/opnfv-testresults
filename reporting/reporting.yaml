@@ -2,14 +2,14 @@
 general:
     pods:
         - lf-pod2
-        # - pod4
+        #- pod4
 
     versions:
         - master
         - euphrates
     log:
         log_file: reporting.log
-        log_level: DEBUG
+        log_level: ERROR
 
     period: 10
 
@@ -34,8 +34,6 @@ testapi:
 functest:
     blacklist:
         - odl_netvirt
-        - tempest_full_parallel
-        - rally_full
     max_scenario_criteria: 50
     test_conf: https://git.opnfv.org/cgit/functest/plain/functest/ci/testcases.yaml
     log_level: ERROR
