@@ -81,13 +81,9 @@ for version in rp_utils.get_config('general.versions'):
 
                 # retrieve results
                 # ****************
-                print " ----------------- "
-                print result['details']
-                print " ----------------- "
-
                 nb_tests_run = result['details']['success_number']
                 nb_tests_failed = result['details']['failures_number']
-                logger.debug("nb_tests_run= %s", nb_tests_run)
+                logger.debug("nb_tests_run=:86 %s", nb_tests_run)
                 logger.debug("nb_tests_failed= %s", nb_tests_failed)
 
                 try:

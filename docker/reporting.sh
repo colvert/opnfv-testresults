@@ -3,7 +3,7 @@
 export PYTHONPATH="${PYTHONPATH}:./reporting"
 export CONFIG_REPORTING_YAML=./reporting/reporting.yaml
 
-declare -a versions=(euphrates master)
+declare -a versions=(fraser master)
 declare -a projects=(functest)
 
 project=$1
@@ -24,6 +24,11 @@ cp -Rf css display
 cp -Rf html/* display
 cp -Rf img display
 cp -Rf js display
+
+for i in "${versions[@]}"
+do
+  cp -Rf html/functest.html display/$i/functest
+done
 
 # if nothing is precised run all the reporting generation
 #  projet   |        option

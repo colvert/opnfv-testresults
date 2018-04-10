@@ -1,15 +1,16 @@
 ---
 general:
     pods:
+        - toto
         - lf-pod2
         #- pod4
 
     versions:
         - master
-        - euphrates
+        # - euphrates
     log:
         log_file: reporting.log
-        log_level: ERROR
+        log_level: INFO
 
     period: 10
 
@@ -24,12 +25,11 @@ general:
         dir_templates: utils/tests/reporting/templates/
         dir_display: utils/tests/reporting/display/
 
-    # url: 10.0.2.8:8021/reporting/
-    url: testresults.opnfv.org/reporting/
+    url: docker.infra.opnfv.fr:8021/reporting/
 
 testapi:
-    url: testresults.opnfv.org/test/api/v1/results
-    # url: 10.0.2.8:8001/api/v1/results
+    # url: testresults.opnfv.org/test/api/v1/results
+    url: docker.infra.opnfv.fr:8001/api/v1/results
 
 functest:
     blacklist:
