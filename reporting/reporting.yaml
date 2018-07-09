@@ -1,13 +1,13 @@
 ---
 general:
     pods:
-        - toto
-        - lf-pod2
-        #- pod4
+        - pod1
+        - pod3
+        - pod4
 
     versions:
         - master
-        # - euphrates
+        - fraser
     log:
         log_file: reporting.log
         log_level: INFO
@@ -29,7 +29,7 @@ general:
 
 testapi:
     # url: testresults.opnfv.org/test/api/v1/results
-    url: docker.infra.opnfv.fr:8001/api/v1/results
+    url: opnfv.api.testresults.opnfv.fr/api/v1/results
 
 functest:
     blacklist:
@@ -41,8 +41,3 @@ functest:
     # yamllint disable rule:truthy
     exclude_noha: False
     exclude_virtual: False
-    # yamllint enable
-
-yardstick:
-    test_conf: https://git.opnfv.org/cgit/yardstick/plain/tests/ci/report_config.yaml
-    log_level: ERROR

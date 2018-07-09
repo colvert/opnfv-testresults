@@ -28,9 +28,10 @@ var gauge = function(container) {
     labelFormat					: d3.format(',g'),
     labelInset					: 10,
 
-    arcColorFn					: d3.interpolateHsl(d3.rgb('#ff0000'), d3.rgb('#00ff00'))
+    arcColorFn					: d3.scale.quantile()
+              .domain([0, , 0.6, 0.8, 1])
+               .range([d3.rgb('#ff0000'),d3.rgb('#ffcc00'),d3.rgb('#00ff00')])
   };
-
 
 var range = undefined;
 var r = undefined;

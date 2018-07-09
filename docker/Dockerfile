@@ -43,17 +43,6 @@ RUN pip install --upgrade pip && easy_install -U setuptools==30.0.0
 RUN git clone --depth 1 https://github.com/colvert/opnfv-testresults.git /home/opnfv/releng-testresults
 RUN pip install -r ${working_dir}/requirements.txt
 
-RUN sh -c 'curl -sL https://deb.nodesource.com/setup_8.x | bash -' \
-    && apt-get install -y nodejs \
-    && npm install -g bower \
-    && npm install -g grunt \
-    && npm install -g grunt-cli
-
 WORKDIR ${working_dir}
 RUN python setup.py install
 RUN docker/reporting.sh
-RUN docker/web_server.sh
-
-expose 8000
-
-CMD ["/usr/bin/supervisord"]

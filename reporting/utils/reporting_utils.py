@@ -105,7 +105,7 @@ def getApiResults(case, pod, scenario, version):
         k = response.read()
         results = json.loads(k)
     except URLError:
-        print "Error when retrieving results form API"
+        print("Error when retrieving results form API")
 
     return results
 
@@ -133,6 +133,7 @@ def getScenarios(project, case, pod, version, **kwargs):
         url += "&case=" + case
 
     try:
+        print(url)
         request = Request(url)
         response = urlopen(request)
         k = response.read()
@@ -150,9 +151,9 @@ def getScenarios(project, case, pod, version, **kwargs):
                     results = json.loads(k)
                     test_results += results['results']
         except KeyError:
-            print "No pagination detected"
+            print("No pagination detected")
     except URLError as err:
-        print 'Got an error code: {}'.format(err)
+        print('Got an error code: {}'.format(err))
 
     if test_results is not None:
         test_results.reverse()
@@ -168,7 +169,7 @@ def getScenarios(project, case, pod, version, **kwargs):
             exclude_noha = get_config('functest.exclude_noha')
             if ((exclude_virtual_pod and "virtual" in my_result['pod_name']) or
                     (exclude_noha and "noha" in my_result['scenario'])):
-                print "exclude virtual pod results..."
+                print("exclude virtual pod results...")
             else:
                 scenario_results[my_result['scenario']].append(my_result)
 
@@ -204,7 +205,7 @@ def getScenarioStatus(pod, version):
         results = json.loads(k)
         test_results = results['results']
     except URLError:
-        print "GetScenarioStatus: error when calling the API"
+        print("GetScenarioStatus: error when calling the API")
 
     x86 = 'x86'
     aarch64 = 'aarch64'
@@ -250,7 +251,7 @@ def getNbtestOk(results):
                 if "PASS" in res_v:
                     nb_test_ok += 1
             except Exception:
-                print "Cannot retrieve test status"
+                print("Cannot retrieve test status")
     return nb_test_ok
 
 
@@ -341,7 +342,7 @@ def getCaseScoreFromBuildTag(testCase, s_results):
             if "PASS" in results['results'][0]['criteria']:
                 test_result_indicator += 1
     except:
-        print "No results found for this case"
+        print("No results found for this case")
     if test_result_indicator > 2:
         test_result_indicator = test_result_indicator - 1
 
@@ -365,7 +366,7 @@ def getJenkinsUrl(build_tag):
                   "/" + str(build_id[0]))
         jenkins_url = url_base + url_id + "/console"
     except Exception:
-        print 'Impossible to get jenkins url:'
+        print('Impossible to get jenkins url:')
 
     if "jenkins-" not in build_tag:
         jenkins_url = None
@@ -381,7 +382,7 @@ def getScenarioPercent(scenario_score, scenario_criteria):
     try:
         score = float(scenario_score) / float(scenario_criteria) * 100
     except Exception:
-        print 'Impossible to calculate the percentage score'
+        print('Impossible to calculate the percentage score')
     return score
 
 
@@ -481,21 +482,12 @@ def get_percent(four_list, ten_list):
 
     return _get_percent(status)
 
-
-def _test():
-    """
-    Yardstick util function (test)
-    """
-    status = getScenarioStatus("compass", "master")
-    print "status:++++++++++++++++++++++++"
-    print json.dumps(status, indent=4)
-
-
 # ----------------------------------------------------------
 #
 #               Export
 #
 # -----------------------------------------------------------
+
 
 def export_csv(scenario_file_name, pod, version):
     """
