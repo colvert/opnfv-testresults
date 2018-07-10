@@ -47,3 +47,5 @@ WORKDIR ${working_dir}
 RUN python setup.py install
 RUN docker/web_server.sh
 RUN docker/reporting.sh
+
+expose 8000
